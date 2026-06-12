@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio Kreatif | Desain Grafis & Motion</title>
+    <title>Portofolio Kreatif | Afif Nurdwi - UI/UX & Desain Grafis</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <script>
         tailwind.config = {
@@ -21,7 +21,7 @@
                         black: '#0a0a0a',
                         dark: '#121212',
                         white: '#f4f4f5',
-                        accent: '#CCFF00', /* Lime neon */
+                        accent: '#CCFF00',
                         gray: '#a1a1aa'
                     }
                 }
@@ -31,11 +31,10 @@
 
     <style type="text/tailwindcss">
         @layer utilities {
-            /* Kursor hanya disembunyikan di desktop */
             @media (min-width: 768px) {
                 body { cursor: none; }
                 .custom-cursor { 
-                    @apply fixed top-0 left-0 w-4 h-4 bg-white rounded-full pointer-events-none mix-blend-difference z-50 transition-transform duration-100 ease-out; 
+                    @apply fixed top-0 left-0 w-4 h-4 bg-white rounded-full pointer-events-none mix-blend-difference z-[999] transition-transform duration-100 ease-out; 
                     transform: translate(-50%, -50%); 
                 }
                 .custom-cursor.hovered { @apply w-16 h-16 bg-transparent border border-white; }
@@ -60,9 +59,17 @@
 </head>
 <body class="bg-black text-white overflow-x-hidden selection:bg-accent selection:text-black">
 
-    <div id="image-modal" class="fixed inset-0 hidden z-[100] flex items-center justify-center bg-black/90 p-4 cursor-zoom-out">
-        <button id="close-modal" class="absolute top-8 right-8 text-white text-5xl hover:text-accent z-[101]">&times;</button>
-        <img id="modal-img" src="" class="max-h-[90vh] max-w-full object-contain rounded-lg">
+    <div id="unified-modal" class="fixed inset-0 hidden z-[200] flex flex-col items-center justify-center bg-black/95 transition-opacity duration-300">
+        <button id="close-modal" class="absolute top-8 right-8 text-white/50 text-6xl hover:text-accent transition-colors z-[210]">&times;</button>
+        
+        <div id="modal-content-area" class="w-full h-full flex items-center justify-center p-4 md:p-12 pb-24">
+            </div>
+
+        <div id="modal-nav-ui" class="hidden absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-6 items-center z-[220] bg-dark px-8 py-4 rounded-full border border-white/20 shadow-2xl">
+            <button id="slide-prev" class="text-white hover:text-accent disabled:opacity-30 disabled:cursor-not-allowed font-bold transition-colors text-lg">← Prev</button>
+            <span id="slide-counter" class="font-mono text-sm text-gray">1 / 2</span>
+            <button id="slide-next" class="text-white hover:text-accent disabled:opacity-30 disabled:cursor-not-allowed font-bold transition-colors text-lg">Next →</button>
+        </div>
     </div>
 
     <div id="cursor" class="custom-cursor hidden md:block"></div>
@@ -78,15 +85,11 @@
 
     <header class="h-screen w-full flex flex-col justify-center items-center px-4 relative overflow-hidden">
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-accent/10 rounded-full blur-[120px] pointer-events-none"></div>
-
         <div class="z-10 text-center space-y-4">
-            <p class="reveal text-accent font-mono text-sm tracking-[0.2em] uppercase">Desainer Grafis</p>
             <h1 class="reveal font-display font-extrabold text-5xl md:text-8xl lg:text-9xl uppercase leading-[0.9] tracking-tighter">
-                Merancang <br> 
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Yang Tak Terlihat</span>
+                Merancang <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Yang Tak Terlihat</span>
             </h1>
         </div>
-
         <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
         </div>
@@ -94,50 +97,62 @@
 
     <section id="work" class="py-20 px-6 md:px-12 lg:px-24 max-w-screen-2xl mx-auto">
         <h2 class="reveal font-display text-4xl md:text-5xl font-bold mb-16 border-b border-white/20 pb-4">Fake Project <span class="text-accent text-xl align-top">01</span></h2>
-        
-        <div id="fake-project-container" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            </div>
+        <div id="fake-project-container" class="grid grid-cols-1 lg:grid-cols-2 gap-6"></div>
     </section>
 
     <section class="py-20 px-6 md:px-12 lg:px-24 max-w-screen-2xl mx-auto">
         <h2 class="reveal font-display text-4xl md:text-5xl font-bold mb-16 border-b border-white/20 pb-4">Social Media <span class="text-accent text-xl align-top">02</span></h2>
-        
-        <div id="social-gallery" class="reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            </div>
+        <div id="social-gallery" class="reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
     </section>
 
     <section class="py-20 px-6 md:px-12 lg:px-24 max-w-screen-2xl mx-auto overflow-hidden">
         <div class="flex justify-between items-end mb-16 border-b border-white/20 pb-4">
             <h2 class="reveal font-display text-4xl md:text-5xl font-bold">Food Project <span class="text-accent text-xl align-top">03</span></h2>
-            
             <div class="reveal flex gap-4">
-                <button id="prevBtn" class="hoverable w-12 h-12 rounded-full border border-white flex justify-center items-center hover:bg-accent hover:text-black hover:border-accent transition-colors">
-                    ←
-                </button>
-                <button id="nextBtn" class="hoverable w-12 h-12 rounded-full border border-white flex justify-center items-center hover:bg-accent hover:text-black hover:border-accent transition-colors">
-                    →
-                </button>
+                <button id="prevBtn" class="hoverable w-12 h-12 rounded-full border border-white flex justify-center items-center hover:bg-accent hover:text-black transition-colors">←</button>
+                <button id="nextBtn" class="hoverable w-12 h-12 rounded-full border border-white flex justify-center items-center hover:bg-accent hover:text-black transition-colors">→</button>
             </div>
         </div>
-
         <div class="reveal relative w-full overflow-hidden">
-            <div id="food-carousel-track" class="flex transition-transform duration-500 ease-out">
+            <div id="food-carousel-track" class="flex transition-transform duration-500 ease-out"></div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 md:px-12 lg:px-24 max-w-screen-2xl mx-auto">
+        <h2 class="reveal font-display text-4xl md:text-5xl font-bold mb-16 border-b border-white/20 pb-4">UI/UX Case Study <span class="text-accent text-xl align-top">04</span></h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div id="trigger-pdf" class="reveal group hoverable relative overflow-hidden rounded-lg bg-dark cursor-pointer lg:col-span-2 h-[300px] md:h-[400px]">
+                <div class="absolute inset-0 bg-gradient-to-br from-gray-900 to-black flex items-center justify-center">
+                    <i class="fa-solid fa-file-pdf text-6xl text-white/10"></i>
                 </div>
+                <img src="uiux/miniproject.jpg" onerror="this.style.display='none'" alt="UX Case Study" class="w-full h-full object-cover relative z-10 transition-transform duration-700 group-hover:scale-105 opacity-50 group-hover:opacity-100">
+                <div class="absolute inset-0 bg-black/60 flex flex-col justify-end p-8 z-20">
+                    <span class="text-accent font-mono text-sm tracking-widest uppercase mb-1">Click to read PDF</span>
+                    <h3 class="text-2xl md:text-4xl font-display font-bold">PDP Redesign Study Case</h3>
+                    <p class="text-gray mt-2 line-clamp-2">Memaparkan studi kasus perancangan ulang Halaman Detail Produk (PDP) untuk menekan tingginya tingkat pentalan pengguna.</p>
+                </div>
+            </div>
+
+            <div id="trigger-cert" class="reveal group hoverable relative overflow-hidden rounded-lg bg-dark cursor-pointer lg:col-span-1 h-[300px] md:h-[400px]">
+                <div class="absolute inset-0 bg-gradient-to-tr from-gray-800 to-black flex items-center justify-center">
+                    <i class="fa-solid fa-award text-6xl text-white/10"></i>
+                </div>
+                <img src="uiux/cert-cover.jpg" onerror="this.style.display='none'" alt="Webinar Certificate" class="w-full h-full object-cover relative z-10 transition-transform duration-700 group-hover:scale-105 opacity-40 group-hover:opacity-100">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent p-8 flex flex-col justify-end z-20">
+                    <span class="text-accent font-mono text-sm tracking-widest uppercase mb-1">2 Certificates</span>
+                    <h3 class="text-2xl font-display font-bold">Webinar & Course</h3>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="py-20 px-6 md:px-12 lg:px-24 bg-dark">
         <div class="max-w-screen-2xl mx-auto flex flex-col lg:flex-row gap-12">
-            <div class="lg:w-1/3">
-                <h2 class="reveal font-display text-4xl font-bold sticky top-32">Keahlian <br> & Layanan</h2>
-            </div>
+            <div class="lg:w-1/3"><h2 class="reveal font-display text-4xl font-bold sticky top-32">Keahlian <br> & Layanan</h2></div>
             <div class="lg:w-2/3 flex flex-col gap-6">
-                <div class="reveal hoverable group border-b border-white/10 pb-6 hover:border-accent transition-colors duration-300">
-                    <h3 class="text-3xl md:text-5xl font-display font-bold group-hover:text-accent transition-colors">Grahic Design</h3>
-                </div>
-                <div class="reveal hoverable group border-b border-white/10 pb-6 hover:border-accent transition-colors duration-300">
-                    <h3 class="text-3xl md:text-5xl font-display font-bold group-hover:text-accent transition-colors">UI Design</h3>
-                </div>
+                <div class="reveal hoverable group border-b border-white/10 pb-6 hover:border-accent transition-all"><h3 class="text-3xl md:text-5xl font-display font-bold group-hover:text-accent">Graphic Design</h3></div>
+                <div class="reveal hoverable group border-b border-white/10 pb-6 hover:border-accent transition-all"><h3 class="text-3xl md:text-5xl font-display font-bold group-hover:text-accent">UI Design</h3></div>
             </div>
         </div>
     </section>
@@ -146,7 +161,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div class="reveal relative">
                 <div class="aspect-[3/4] bg-white/5 rounded-lg overflow-hidden relative">
-                     <img src="profile.JPG" alt="Profile" class="w-full h-full object-cover">
+                     <img src="profile.jpeg" alt="Profile" class="w-full h-full object-cover">
                      <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 </div>
             </div>
@@ -190,59 +205,84 @@
                 Mari <br> <span class="text-outline text-transparent bg-clip-text text-white/20 hover:text-accent transition-colors duration-500 cursor-pointer hoverable">Berkolaborasi</span>
             </h2>
             <div class="reveal flex flex-col md:flex-row justify-center gap-8 items-center">
-                <a href="mailto:afifnurdwi15@gmail.com" class="hoverable px-8 py-4 border border-white rounded-full hover:bg-white hover:text-black transition-all font-bold text-lg">
-                    Kirim Email
-                </a>
-                <a href="#" class="hoverable px-8 py-4 bg-accent text-black rounded-full hover:bg-opacity-80 transition-all font-bold text-lg">
-                    Mulai Proyek
-                </a>
+                <a href="mailto:afifnurdwi15@gmail.com" class="hoverable px-8 py-4 border border-white rounded-full hover:bg-white hover:text-black transition-all font-bold text-lg">Kirim Email</a>
+                <a href="#" class="hoverable px-8 py-4 bg-accent text-black rounded-full hover:bg-opacity-80 transition-all font-bold text-lg">Mulai Proyek</a>
             </div>
             <div class="reveal pt-20 flex flex-col md:flex-row justify-between items-center text-gray text-sm font-mono gap-4">
-                <p>&copy; 2025 Afif Nurdwi Wicaksono. All Rights Reserved.</p>
+                <p>&copy; 2026 Afif Nurdwi Wicaksono. All Rights Reserved.</p>
                 <div class="flex gap-6">
-                    <a href="https://www.instagram.com/afifnur0?igsh=MWMzc2hrN2F4cTczMw==" class="hover:text-white transition-colors hoverable">Instagram</a>
-                    <a href="https://www.behance.net/afifnurdwi" class="hover:text-white transition-colors hoverable">Behance</a>
-                    <a href="https://www.linkedin.com/in/afif-nurdwi-wicaksono-68373a32b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="hover:text-white transition-colors hoverable">LinkedIn</a>
+                    <a href="#" class="hover:text-white transition-colors hoverable">Instagram</a>
+                    <a href="#" class="hover:text-white transition-colors hoverable">Behance</a>
+                    <a href="#" class="hover:text-white transition-colors hoverable">LinkedIn</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // --- LIGHTBOX LOGIC ---
-        const modal = document.getElementById('image-modal');
-        const modalImg = document.getElementById('modal-img');
+        // --- 1. MODAL LOGIC (Untuk Case Study PDF & Multiple Certificates) ---
+        const modal = document.getElementById('unified-modal');
+        const modalArea = document.getElementById('modal-content-area');
         const closeModal = document.getElementById('close-modal');
+        const navUI = document.getElementById('modal-nav-ui');
+        
+        let isCertMode = false;
+        let currentCertIndex = 0;
+        
+        // Daftar file PDF sertifikat Anda
+        const certPdfs = ['uiux/certificate.pdf', 'uiux/certificate2.pdf'];
 
-        // Fungsi untuk mengaktifkan lightbox
-        function initLightbox() {
-            // Kita cari semua gambar di dalam section project
-            document.querySelectorAll('img').forEach(img => {
-                // Kecuali gambar profil atau ikon
-                if (img.src.includes('fakeproject') || img.src.includes('socialmedia') || img.src.includes('foodproject')) {
-                    img.parentElement.classList.add('cursor-zoom-in');
-                    img.parentElement.onclick = () => {
-                        modalImg.src = img.src;
-                        modal.classList.remove('hidden');
-                        document.body.style.overflow = 'hidden';
-                    };
-                }
-            });
-        }
-
-        closeModal.onclick = () => {
-            modal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
+        // Fungsi buka modal PDF (Case Study 1 file)
+        document.getElementById('trigger-pdf').onclick = () => {
+            isCertMode = false;
+            // Pastikan Anda mengubah nama PDF Case Study menjadi casestudy.pdf dan masukkan ke folder uiux
+            modalArea.innerHTML = `<iframe src="uiux/casestudy.pdf" class="w-full h-full md:w-[80vw] md:h-[90vh] rounded-xl shadow-2xl bg-white" frameborder="0"></iframe>`;
+            modal.classList.remove('hidden');
+            navUI.classList.add('hidden'); // Sembunyikan navigasi karena hanya 1 PDF
+            document.body.style.overflow = 'hidden';
         };
 
+        // Fungsi Render Sertifikat untuk Slider
+        function renderCert(index) {
+            modalArea.innerHTML = `<iframe src="${certPdfs[index]}" class="w-full h-full md:w-[80vw] md:h-[80vh] rounded-xl shadow-2xl bg-white" frameborder="0"></iframe>`;
+            document.getElementById('slide-counter').innerText = `${index + 1} / ${certPdfs.length}`;
+            document.getElementById('slide-prev').disabled = index === 0;
+            document.getElementById('slide-next').disabled = index === certPdfs.length - 1;
+        }
+
+        // Fungsi buka modal Sertifikat (Multiple files)
+        document.getElementById('trigger-cert').onclick = () => {
+            isCertMode = true;
+            currentCertIndex = 0;
+            modal.classList.remove('hidden');
+            navUI.classList.remove('hidden'); // Tampilkan navigasi (Prev/Next)
+            renderCert(currentCertIndex);
+            document.body.style.overflow = 'hidden';
+        };
+
+        // Navigasi Slider Sertifikat
+        document.getElementById('slide-prev').onclick = () => {
+            if (isCertMode && currentCertIndex > 0) renderCert(--currentCertIndex);
+        };
+        document.getElementById('slide-next').onclick = () => {
+            if (isCertMode && currentCertIndex < certPdfs.length - 1) renderCert(++currentCertIndex);
+        };
+
+        // Tutup Modal
+        closeModal.onclick = () => {
+            modal.classList.add('hidden');
+            navUI.classList.add('hidden');
+            modalArea.innerHTML = ''; 
+            document.body.style.overflow = 'auto';
+            isCertMode = false;
+        };
         modal.onclick = (e) => {
-            if(e.target === modal) {
-                modal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
+            if(e.target === modal || e.target === modalArea) {
+                closeModal.click();
             }
         };
 
-        // --- FAKE PROJECT LOGIC ---
+        // --- 2. FAKE PROJECT LOGIC ---
         const fakeProjects = [
             { file: "Blue.jpg", title: "Jordan Blue" },
             { file: "Red.jpg", title: "Jordan Red" },
@@ -267,20 +307,26 @@
                         </div>
                     </div>
                 `;
-                if (index < 2) leftCol.innerHTML += projectHTML;
-                else rightCol.innerHTML += projectHTML;
+                
+                const divWrapper = document.createElement('div');
+                divWrapper.innerHTML = projectHTML;
+                const innerDiv = divWrapper.firstElementChild;
+                innerDiv.onclick = () => {
+                    modalArea.innerHTML = `<img src="${fakeProjectFolder}${project.file}" class="max-h-[90vh] max-w-full rounded-lg object-contain shadow-2xl">`;
+                    modal.classList.remove('hidden');
+                    navUI.classList.add('hidden');
+                    document.body.style.overflow = 'hidden';
+                };
+
+                if (index < 2) leftCol.appendChild(innerDiv);
+                else rightCol.appendChild(innerDiv);
             });
             fakeProjectContainer.appendChild(leftCol);
             fakeProjectContainer.appendChild(rightCol);
         }
 
-        // --- SOCIAL MEDIA LOGIC ---
-        const socialMediaImages = [
-            "feed 2 arena breakout.jpg",
-            "feed arena breakout.jpg",
-            "story 2 arena breakout.jpg",
-            "story arena breakout.jpg"
-        ];
+        // --- 3. SOCIAL MEDIA LOGIC ---
+        const socialMediaImages = ["feed 2 arena breakout.jpg", "feed arena breakout.jpg", "story 2 arena breakout.jpg", "story arena breakout.jpg"];
         const socialContainer = document.getElementById('social-gallery');
         const socialFolder = 'socialmedia/'; 
 
@@ -294,20 +340,18 @@
                         <p class="text-gray text-sm truncate">${filename.replace('.jpg', '')}</p>
                     </div>
                 `;
+                div.onclick = () => {
+                    modalArea.innerHTML = `<img src="${socialFolder}${filename}" class="max-h-[90vh] max-w-full rounded-lg object-contain shadow-2xl">`;
+                    modal.classList.remove('hidden');
+                    navUI.classList.add('hidden');
+                    document.body.style.overflow = 'hidden';
+                };
                 socialContainer.appendChild(div);
             });
         }
 
-        // --- FOOD PROJECT CAROUSEL ---
-        const foodImages = [
-            "Churros1.png",
-            "Artboard 2.png",
-            "Artboard 3.png",
-            "Artboard 4.png",
-            "Churros2.png",
-            "Churros3.png"
-        ];
-        
+        // --- 4. FOOD PROJECT CAROUSEL ---
+        const foodImages = ["Churros1.png", "Artboard 2.png", "Artboard 3.png", "Artboard 4.png", "Churros2.png", "Churros3.png"];
         const foodTrack = document.getElementById('food-carousel-track');
         const foodFolder = 'foodproject/';
         
@@ -323,34 +367,38 @@
                         </div>
                     </div>
                 `;
+                div.onclick = () => {
+                    modalArea.innerHTML = `<img src="${foodFolder}${filename}" class="max-h-[90vh] max-w-full rounded-lg object-contain shadow-2xl">`;
+                    modal.classList.remove('hidden');
+                    navUI.classList.add('hidden');
+                    document.body.style.overflow = 'hidden';
+                };
                 foodTrack.appendChild(div);
             });
 
-            let currentIndex = 0;
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
+            let carouselIndex = 0;
+            const btnPrev = document.getElementById('prevBtn');
+            const btnNext = document.getElementById('nextBtn');
             const totalItems = foodImages.length;
-            
             const getItemsPerSlide = () => window.innerWidth >= 768 ? 3 : 1;
 
             const updateCarousel = () => {
                 const itemsPerSlide = getItemsPerSlide();
                 const maxIndex = totalItems - itemsPerSlide;
                 
-                if (currentIndex < 0) currentIndex = 0;
-                if (currentIndex > maxIndex) currentIndex = maxIndex;
+                if (carouselIndex < 0) carouselIndex = 0;
+                if (carouselIndex > maxIndex) carouselIndex = maxIndex;
 
-                const translateX = -(currentIndex * (100 / itemsPerSlide));
-                foodTrack.style.transform = `translateX(${translateX}%)`;
+                foodTrack.style.transform = `translateX(${-(carouselIndex * (100 / itemsPerSlide))}%)`;
                 
-                prevBtn.style.opacity = currentIndex === 0 ? '0.3' : '1';
-                nextBtn.style.opacity = currentIndex === maxIndex ? '0.3' : '1';
-                prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
-                nextBtn.style.pointerEvents = currentIndex === maxIndex ? 'none' : 'auto';
+                btnPrev.style.opacity = carouselIndex === 0 ? '0.3' : '1';
+                btnNext.style.opacity = carouselIndex === maxIndex ? '0.3' : '1';
+                btnPrev.style.pointerEvents = carouselIndex === 0 ? 'none' : 'auto';
+                btnNext.style.pointerEvents = carouselIndex === maxIndex ? 'none' : 'auto';
             };
 
-            nextBtn.addEventListener('click', () => { currentIndex++; updateCarousel(); });
-            prevBtn.addEventListener('click', () => { currentIndex--; updateCarousel(); });
+            btnNext.addEventListener('click', () => { carouselIndex++; updateCarousel(); });
+            btnPrev.addEventListener('click', () => { carouselIndex--; updateCarousel(); });
             window.addEventListener('resize', updateCarousel);
             updateCarousel();
         }
@@ -378,7 +426,6 @@
 
         setTimeout(() => {
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-            initLightbox(); // Inisialisasi lightbox setelah konten dirender
         }, 500);
 
     </script>
